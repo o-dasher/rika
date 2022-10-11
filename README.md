@@ -81,7 +81,8 @@ To view your application's logs:
 docker-compose logs
 ```
 
-For the full command list please view the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/cli/).
+For the full command list please view
+the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
 # 📜 Documentation
 
@@ -96,4 +97,5 @@ For the full command list please view the [Docker Documentation](https://docs.do
 
 # 💖 Thank you
 
-You can support [discordx](https://www.npmjs.com/package/discordx) by giving it a [GitHub](https://github.com/oceanroleplay/discord.ts) star.
+You can support [discordx](https://www.npmjs.com/package/discordx) by giving it
+a [GitHub](https://github.com/oceanroleplay/discord.ts) star.
