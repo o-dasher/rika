@@ -15,24 +15,49 @@ export type Translations = RootTranslation
 
 type RootTranslation = {
 	commands: {
+		user: {
+			avatar: {
+				/**
+				 * I​ ​c​o​u​l​d​n​'​t​ ​f​i​n​d​ ​{​u​s​e​r​}​'​s​ ​a​v​a​t​a​r​.​.​.
+				 * @param {string} user
+				 */
+				not_found: RequiredParams<'user'>
+				/**
+				 * V​i​e​w​ ​a​v​a​t​a​r​ ​o​n​ ​y​o​u​r​ ​b​r​o​w​s​e​r
+				 */
+				view_avatar: string
+			}
+		}
 		dice: {
 			/**
-			 * :​g​a​m​e​_​d​i​e​:​ ​|​ ​{​m​e​m​b​e​r​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
-			 * @param {string} member
+			 * {​u​s​e​r​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
 			 * @param {number} rolled
+			 * @param {string} user
 			 */
-			roll: RequiredParams<'member' | 'rolled'>
+			roll: RequiredParams<'rolled' | 'user'>
 		}
 	}
 }
 
 export type TranslationFunctions = {
 	commands: {
+		user: {
+			avatar: {
+				/**
+				 * I couldn't find {user}'s avatar...
+				 */
+				not_found: (arg: { user: string }) => LocalizedString
+				/**
+				 * View avatar on your browser
+				 */
+				view_avatar: () => LocalizedString
+			}
+		}
 		dice: {
 			/**
-			 * :game_die: | {member} rolled the dice... got {rolled}!
+			 * {user} rolled the dice... got {rolled}!
 			 */
-			roll: (arg: { member: string, rolled: number }) => LocalizedString
+			roll: (arg: { rolled: number, user: string }) => LocalizedString
 		}
 	}
 }

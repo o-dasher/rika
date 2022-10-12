@@ -1,13 +1,15 @@
 import type { BaseTranslation } from "../i18n-types.js";
-import { DiscordEmotes } from "../../utils/emotes";
-import { emotify, error } from "../../utils/text";
-
-const { GameDie } = DiscordEmotes;
 
 const ptBR: BaseTranslation = {
 	commands: {
+		user: {
+			avatar: {
+				not_found: "Não consegui achar o avatar do {user:string}...",
+				view_avatar: "Ver avatar no seu browser"
+			}
+		},
 		dice: {
-			roll: emotify(GameDie, "{member:string} rolou um dado... tirou um {rolled:number}!"),
+			roll: "{user:string} rolou um dado... tirou um {rolled:number}!"
 		}
 	}
 };

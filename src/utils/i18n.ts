@@ -1,4 +1,4 @@
-import { CommandInteraction, User } from "discord.js";
+import { CommandInteraction } from "discord.js";
 import L from "../i18n/i18n-node";
 import { TranslationFunctions } from "../i18n/i18n-types";
 
@@ -16,4 +16,4 @@ export const interactionI18N = (interaction: CommandInteraction) => {
 	
 	return Object.getOwnPropertyNames(i18n).length == default_property_count
 	       ? default_i18n : i18n;
-}
+};
