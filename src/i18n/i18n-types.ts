@@ -14,19 +14,35 @@ export type Translation = RootTranslation
 export type Translations = RootTranslation
 
 type RootTranslation = {
-	/**
-	 * :​g​a​m​e​_​d​i​e​:​ ​|​ ​{​m​e​m​b​e​r​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
-	 * @param {string} member
-	 * @param {number} rolled
-	 */
-	ROLL_DICE: RequiredParams<'member' | 'rolled'>
+	commands: {
+		dice: {
+			/**
+			 * <​:​_​:​g​a​m​e​_​d​i​e​>​ ​|​ ​{​m​e​m​b​e​r​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
+			 * @param {string} member
+			 * @param {number} rolled
+			 */
+			roll: RequiredParams<'member' | 'rolled'>
+			/**
+			 * <​:​_​:​x​>​ ​|​ ​T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​b​e​t​w​e​e​n​ ​t​h​e​ ​m​i​n​ ​a​n​d​ ​m​a​x​ ​v​a​l​u​e​s​ ​a​r​e​ ​t​o​o​ ​s​m​a​l​l​.
+			 */
+			smallDifference: string
+		}
+	}
 }
 
 export type TranslationFunctions = {
-	/**
-	 * :game_die: | {member} rolled the dice... got {rolled}!
-	 */
-	ROLL_DICE: (arg: { member: string, rolled: number }) => LocalizedString
+	commands: {
+		dice: {
+			/**
+			 * <:_:game_die> | {member} rolled the dice... got {rolled}!
+			 */
+			roll: (arg: { member: string, rolled: number }) => LocalizedString
+			/**
+			 * <:_:x> | The difference between the min and max values are too small.
+			 */
+			smallDifference: () => LocalizedString
+		}
+	}
 }
 
 export type Formatters = {}

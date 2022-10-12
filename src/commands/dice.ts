@@ -1,10 +1,9 @@
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, bold, CommandInteraction } from "discord.js";
 import { randomInt } from "crypto";
-import L from "../i18n/i18n-node";
 import { interactionI18N } from "../utils/i18n";
 
-const over_limits_addition = 1;
+const minimal_roll_diff = 1;
 
 const default_min = 1;
 const default_max = 10;
@@ -22,9 +21,9 @@ const clampValue = {
 	nameLocalizations: {
 		"pt-BR": "dado"
 	},
-	description: "Dices... they are very fun :smile:",
+	description: `Dices... they are very fun.`,
 	descriptionLocalizations: {
-		"pt-BR": "Dados... eles são bem legais :smile:"
+		"pt-BR": "Dados... eles são bem legais."
 	}
 })
 @SlashGroup(name)
@@ -65,14 +64,16 @@ export abstract class Dice {
 		min ??= default_min;
 		max ??= default_max;
 		
-		min = Math.min(min, max - over_limits_addition)
-		max = Math.max(max, min + over_limits_addition)
+		const i18n = interactionI18N(interaction);
+		
+		if (Math.abs(min - max) < minimal_roll_diff)
+			return await interaction.reply(bold(i18n.commands.dice.smallDifference()))
 		
 		const rolled = randomInt(min, max);
 		
 		await interaction.reply(
 			bold(
-				interactionI18N(interaction).ROLL_DICE({
+				i18n.commands.dice.roll({
 					rolled,
 					member: interaction.user.toString()
 				})
