@@ -8,7 +8,7 @@
     "build": "tsc",
     "build:changelog": "npx @discordx/changelog --root=src",
     "i18n": "typesafe-i18n",
-    "start": "node build/main.js",
+    "start": "node .",
     "dev:bot": "ts-node src/main.ts",
     "dev": "npm-run-all --parallel dev:bot i18n",
     "watch": "nodemon --exec npm run dev"
