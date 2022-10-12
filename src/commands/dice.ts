@@ -1,7 +1,7 @@
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, bold, CommandInteraction } from "discord.js";
-import { randomInt } from "crypto";
 import { interactionI18N } from "../utils/i18n";
+import { random } from "pandemonium";
 
 const minimal_roll_diff = 1;
 
@@ -64,16 +64,11 @@ export abstract class Dice {
 		min ??= default_min;
 		max ??= default_max;
 		
-		const i18n = interactionI18N(interaction);
-		
-		if (Math.abs(min - max) < minimal_roll_diff)
-			return await interaction.reply(bold(i18n.commands.dice.smallDifference()))
-		
-		const rolled = randomInt(min, max);
+		const rolled = random(min, max);
 		
 		await interaction.reply(
 			bold(
-				i18n.commands.dice.roll({
+				interactionI18N(interaction).commands.dice.roll({
 					rolled,
 					member: interaction.user.toString()
 				})

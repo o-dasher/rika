@@ -22,10 +22,6 @@ type RootTranslation = {
 			 * @param {number} rolled
 			 */
 			roll: RequiredParams<'member' | 'rolled'>
-			/**
-			 * :​x​:​ ​|​ ​T​h​e​ ​d​i​f​f​e​r​e​n​c​e​ ​b​e​t​w​e​e​n​ ​t​h​e​ ​m​i​n​ ​a​n​d​ ​m​a​x​ ​v​a​l​u​e​s​ ​a​r​e​ ​t​o​o​ ​s​m​a​l​l​.
-			 */
-			smallDifference: string
 		}
 	}
 }
@@ -37,10 +33,6 @@ export type TranslationFunctions = {
 			 * :game_die: | {member} rolled the dice... got {rolled}!
 			 */
 			roll: (arg: { member: string, rolled: number }) => LocalizedString
-			/**
-			 * :x: | The difference between the min and max values are too small.
-			 */
-			smallDifference: () => LocalizedString
 		}
 	}
 }

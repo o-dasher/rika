@@ -8,7 +8,6 @@ const ptBR: BaseTranslation = {
 	commands: {
 		dice: {
 			roll: emotify(GameDie, "{member:string} rolou um dado... tirou um {rolled:number}!"),
-			smallDifference: error("A diferença entre o valor mínimo e o valor máximo é muito pequena.")
 		}
 	}
 };
