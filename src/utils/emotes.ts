@@ -1,14 +1,15 @@
-import { formatEmoji } from "discord.js";
 import { MapValues } from "./types";
 
-const gameDie = "game_die";
-const smile = "smile"
-const x = "x"
+const discordEmotify = <T extends string>(name: T): `:${T}:` => `:${name}:`
+
+const GameDie = discordEmotify("game_die")
+const Smile = discordEmotify("smile")
+const X = discordEmotify("x")
 
 export const DiscordEmotes = {
-	GameDie: formatEmoji<typeof gameDie>(gameDie),
-	Smile: formatEmoji<typeof smile>(smile),
-	X: formatEmoji<typeof x>(x)
+	GameDie,
+	Smile,
+	X
 }
 
 export type DiscordEmote = MapValues<typeof DiscordEmotes>
