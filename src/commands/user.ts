@@ -10,10 +10,8 @@ import {
 } from "discord.js";
 import { emotifySpaced, error } from "../utils/text";
 import { DiscordEmotes } from "../utils/emotes";
-import { rikaEmbed } from "../utils/embeds";
+import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../utils/embeds";
 import { interactionI18N } from "../utils/i18n";
-
-const avatar_size = 2048;
 
 const name = "user";
 
@@ -47,7 +45,7 @@ export abstract class User {
 		interaction: CommandInteraction
 	) {
 		const i18n = interactionI18N(interaction);
-		const avatarURL = interaction.user.avatarURL({ size: avatar_size });
+		const avatarURL = interaction.user.avatarURL({ size: FULL_FRAME_AVATAR_SIZE });
 		
 		const embed = rikaEmbed(new EmbedBuilder())
 			.setTitle(emotifySpaced(DiscordEmotes.CameraWithFlash, interaction.user.username))

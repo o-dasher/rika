@@ -15,6 +15,20 @@ export type Translations = RootTranslation
 
 type RootTranslation = {
 	commands: {
+		invite: {
+			/**
+			 * D​o​ ​i​t​ ​p​l​z​.​.​.
+			 */
+			title: string
+			/**
+			 * I​ ​a​m​ ​r​i​k​a​,​ ​a​ ​d​i​s​c​o​r​d​ ​b​o​t​ ​w​h​i​c​h​ ​a​i​m​s​ ​t​o​ ​d​o​ ​s​o​m​e​ ​s​t​u​f​f​.
+			 */
+			description: string
+			/**
+			 * I​n​v​i​t​e​ ​m​e​!
+			 */
+			button: string
+		}
 		user: {
 			avatar: {
 				/**
@@ -41,6 +55,20 @@ type RootTranslation = {
 
 export type TranslationFunctions = {
 	commands: {
+		invite: {
+			/**
+			 * Do it plz...
+			 */
+			title: () => LocalizedString
+			/**
+			 * I am rika, a discord bot which aims to do some stuff.
+			 */
+			description: () => LocalizedString
+			/**
+			 * Invite me!
+			 */
+			button: () => LocalizedString
+		}
 		user: {
 			avatar: {
 				/**
