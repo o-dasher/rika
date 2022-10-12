@@ -8,8 +8,8 @@ import {
 	OAuth2Scopes,
 	PermissionsBitField
 } from "discord.js";
-import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../utils/embeds";
-import { interactionI18N } from "../utils/i18n";
+import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../../utils/embeds";
+import { interactionI18N } from "../../utils/i18n";
 
 @Discord()
 export abstract class Invite {

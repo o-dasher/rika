@@ -1,11 +1,9 @@
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, bold, CommandInteraction } from "discord.js";
-import { interactionI18N } from "../utils/i18n";
+import { interactionI18N } from "../../utils/i18n";
 import { random } from "pandemonium";
-import { emotifySlashed } from "../utils/text";
-import { DiscordEmotes } from "../utils/emotes";
-
-const minimal_roll_diff = 1;
+import { emotifySlashed } from "../../utils/text";
+import { DiscordEmotes } from "../../utils/emotes";
 
 const default_min = 1;
 const default_max = 10;

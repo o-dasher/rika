@@ -8,10 +8,10 @@ import {
 	CommandInteraction,
 	EmbedBuilder
 } from "discord.js";
-import { emotifySpaced, error } from "../utils/text";
-import { DiscordEmotes } from "../utils/emotes";
-import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../utils/embeds";
-import { interactionI18N } from "../utils/i18n";
+import { emotifySpaced, error } from "../../utils/text";
+import { DiscordEmotes } from "../../utils/emotes";
+import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../../utils/embeds";
+import { interactionI18N } from "../../utils/i18n";
 
 const name = "user";
 
