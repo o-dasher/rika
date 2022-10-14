@@ -15,6 +15,21 @@ export type Translations = RootTranslation
 
 type RootTranslation = {
 	commands: {
+		math: {
+			calc: {
+				/**
+				 * `​{​e​x​p​r​e​s​s​i​o​n​}​`​ ​i​s​ ​n​o​t​ ​a​ ​v​a​l​i​d​ ​m​a​t​h​e​m​a​t​i​c​a​l​ ​e​x​p​r​e​s​s​i​o​n​!
+				 * @param {string} expression
+				 */
+				bad: RequiredParams<'expression'>
+				/**
+				 * H​a​i​!​ ​`​{​e​x​p​r​e​s​s​i​o​n​}​`​ ​r​e​s​u​l​t​s​ ​t​o​ ​`​{​r​e​s​u​l​t​}​`​.
+				 * @param {string} expression
+				 * @param {string} result
+				 */
+				result: RequiredParams<'expression' | 'result'>
+			}
+		}
 		invite: {
 			/**
 			 * D​o​ ​i​t​ ​p​l​z​.​.​.
@@ -32,10 +47,10 @@ type RootTranslation = {
 		user: {
 			avatar: {
 				/**
-				 * I​ ​c​o​u​l​d​n​'​t​ ​f​i​n​d​ ​{​u​s​e​r​}​'​s​ ​a​v​a​t​a​r​.​.​.
-				 * @param {string} user
+				 * I​ ​c​o​u​l​d​n​'​t​ ​f​i​n​d​ ​{​u​s​e​r​n​a​m​e​}​'​s​ ​a​v​a​t​a​r​.​.​.
+				 * @param {string} username
 				 */
-				not_found: RequiredParams<'user'>
+				not_found: RequiredParams<'username'>
 				/**
 				 * V​i​e​w​ ​a​v​a​t​a​r​ ​o​n​ ​y​o​u​r​ ​b​r​o​w​s​e​r
 				 */
@@ -44,17 +59,29 @@ type RootTranslation = {
 		}
 		dice: {
 			/**
-			 * {​u​s​e​r​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
+			 * {​m​e​n​t​i​o​n​}​ ​r​o​l​l​e​d​ ​t​h​e​ ​d​i​c​e​.​.​.​ ​g​o​t​ ​{​r​o​l​l​e​d​}​!
+			 * @param {string} mention
 			 * @param {number} rolled
-			 * @param {string} user
 			 */
-			roll: RequiredParams<'rolled' | 'user'>
+			roll: RequiredParams<'mention' | 'rolled'>
 		}
 	}
 }
 
 export type TranslationFunctions = {
 	commands: {
+		math: {
+			calc: {
+				/**
+				 * `{expression}` is not a valid mathematical expression!
+				 */
+				bad: (arg: { expression: string }) => LocalizedString
+				/**
+				 * Hai! `{expression}` results to `{result}`.
+				 */
+				result: (arg: { expression: string, result: string }) => LocalizedString
+			}
+		}
 		invite: {
 			/**
 			 * Do it plz...
@@ -72,9 +99,9 @@ export type TranslationFunctions = {
 		user: {
 			avatar: {
 				/**
-				 * I couldn't find {user}'s avatar...
+				 * I couldn't find {username}'s avatar...
 				 */
-				not_found: (arg: { user: string }) => LocalizedString
+				not_found: (arg: { username: string }) => LocalizedString
 				/**
 				 * View avatar on your browser
 				 */
@@ -83,9 +110,9 @@ export type TranslationFunctions = {
 		}
 		dice: {
 			/**
-			 * {user} rolled the dice... got {rolled}!
+			 * {mention} rolled the dice... got {rolled}!
 			 */
-			roll: (arg: { rolled: number, user: string }) => LocalizedString
+			roll: (arg: { mention: string, rolled: number }) => LocalizedString
 		}
 	}
 }

@@ -6,7 +6,8 @@ import {
 	ButtonBuilder,
 	ButtonStyle,
 	CommandInteraction,
-	EmbedBuilder
+	EmbedBuilder,
+	User
 } from "discord.js";
 import { emotifySpaced, error } from "../../utils/text";
 import { DiscordEmotes } from "../../utils/emotes";
@@ -24,7 +25,7 @@ const name = "user";
 	}
 })
 @SlashGroup(name)
-export abstract class User {
+export abstract class UserCommand {
 	@Slash({
 		name: "avatar",
 		description: "View the avatar of @someone.",
@@ -44,18 +45,20 @@ export abstract class User {
 			user: User,
 		interaction: CommandInteraction
 	) {
+		user ??= interaction.user;
+		
+		const { username } = user;
+		
 		const i18n = interactionI18N(interaction);
-		const avatarURL = interaction.user.avatarURL({ size: FULL_FRAME_AVATAR_SIZE });
+		const avatarURL = user.avatarURL({ size: FULL_FRAME_AVATAR_SIZE });
 		
 		const embed = rikaEmbed(new EmbedBuilder())
-			.setTitle(emotifySpaced(DiscordEmotes.CameraWithFlash, interaction.user.username))
+			.setTitle(emotifySpaced(DiscordEmotes.CameraWithFlash, username))
 			.setImage(avatarURL);
 		
 		if (!avatarURL)
 			return await interaction.reply(
-				bold(error(i18n.commands.user.avatar.not_found({
-					user: interaction.user.username
-				})))
+				bold(error(i18n.commands.user.avatar.not_found({ username })))
 			);
 		
 		const row = new ActionRowBuilder<ButtonBuilder>()

@@ -72,7 +72,7 @@ export abstract class Dice {
 					DiscordEmotes.GameDie,
 					interactionI18N(interaction).commands.dice.roll({
 						rolled,
-						user: interaction.user.toString()
+						mention: interaction.user.toString()
 					})
 				)
 			)

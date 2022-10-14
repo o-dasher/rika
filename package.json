@@ -19,6 +19,7 @@
     "discord.js": "^14.4.0",
     "discordx": "^11.3.0",
     "dotenv": "^16.0.3",
+    "mathjs": "^11.3.0",
     "pandemonium": "^2.4.1",
     "typesafe-i18n": "^5.14.0"
   },
