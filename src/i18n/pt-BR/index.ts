@@ -4,8 +4,8 @@ const ptBR: BaseTranslation = {
 	commands: {
 		math: {
 			calc: {
-				bad: "`{expression:string}` não é uma expressão matemática valida.",
-				result: "Hai! `{expression:string}` resulta em `{result:string}`."
+				bad: "{expression:string} não é uma expressão matemática valida.",
+				result: "Hai! {expression:string} resulta em {result:string}."
 			}
 		},
 		invite: {

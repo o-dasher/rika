@@ -4,8 +4,8 @@ const en: BaseTranslation = {
 	commands: {
 		math: {
 			calc: {
-				bad: "`{expression:string}` is not a valid mathematical expression!",
-				result: "Hai! `{expression:string}` results to `{result:string}`."
+				bad: "{expression:string} is not a valid mathematical expression!",
+				result: "Hai! {expression:string} results to {result:string}."
 			}
 		},
 		invite: {

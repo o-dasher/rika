@@ -1,5 +1,5 @@
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
-import { ApplicationCommandOptionType, bold, CommandInteraction } from "discord.js";
+import { ApplicationCommandOptionType, bold, CommandInteraction, inlineCode } from "discord.js";
 import { evaluate } from "mathjs";
 import { interactionI18N } from "../../utils/i18n";
 import { error, success } from "../../utils/text";
@@ -38,20 +38,24 @@ export abstract class Math {
 	) {
 		const i18n = interactionI18N(interaction);
 		
+		const expressionArgs = {
+			expression: inlineCode(expression)
+		};
+		
 		let result: string;
 		
 		try {
-			result = evaluate(expression);
+			result = inlineCode(evaluate(expression));
 		} catch {
 			return await interaction.reply(
-				bold(error(i18n.commands.math.calc.bad({ expression })))
+				bold(error(i18n.commands.math.calc.bad(expressionArgs)))
 			);
 		}
 		
 		await interaction.reply(
 			bold(success(
 				i18n.commands.math.calc.result({
-					expression,
+					...expressionArgs,
 					result
 				})
 			))

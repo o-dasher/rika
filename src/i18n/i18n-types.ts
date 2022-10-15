@@ -18,12 +18,12 @@ type RootTranslation = {
 		math: {
 			calc: {
 				/**
-				 * `​{​e​x​p​r​e​s​s​i​o​n​}​`​ ​i​s​ ​n​o​t​ ​a​ ​v​a​l​i​d​ ​m​a​t​h​e​m​a​t​i​c​a​l​ ​e​x​p​r​e​s​s​i​o​n​!
+				 * {​e​x​p​r​e​s​s​i​o​n​}​ ​i​s​ ​n​o​t​ ​a​ ​v​a​l​i​d​ ​m​a​t​h​e​m​a​t​i​c​a​l​ ​e​x​p​r​e​s​s​i​o​n​!
 				 * @param {string} expression
 				 */
 				bad: RequiredParams<'expression'>
 				/**
-				 * H​a​i​!​ ​`​{​e​x​p​r​e​s​s​i​o​n​}​`​ ​r​e​s​u​l​t​s​ ​t​o​ ​`​{​r​e​s​u​l​t​}​`​.
+				 * H​a​i​!​ ​{​e​x​p​r​e​s​s​i​o​n​}​ ​r​e​s​u​l​t​s​ ​t​o​ ​{​r​e​s​u​l​t​}​.
 				 * @param {string} expression
 				 * @param {string} result
 				 */
@@ -73,11 +73,11 @@ export type TranslationFunctions = {
 		math: {
 			calc: {
 				/**
-				 * `{expression}` is not a valid mathematical expression!
+				 * {expression} is not a valid mathematical expression!
 				 */
 				bad: (arg: { expression: string }) => LocalizedString
 				/**
-				 * Hai! `{expression}` results to `{result}`.
+				 * Hai! {expression} results to {result}.
 				 */
 				result: (arg: { expression: string, result: string }) => LocalizedString
 			}
