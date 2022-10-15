@@ -15,7 +15,6 @@ const en: BaseTranslation = {
 		},
 		user: {
 			avatar: {
-				not_found: "I couldn't find {username:string}'s avatar...",
 				view_avatar: "View avatar on your browser"
 			}
 		},

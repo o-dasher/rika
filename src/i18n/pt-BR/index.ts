@@ -15,7 +15,6 @@ const ptBR: BaseTranslation = {
 		},
 		user: {
 			avatar: {
-				not_found: "Não consegui achar o avatar do {username:string}...",
 				view_avatar: "Ver avatar no seu browser"
 			}
 		},

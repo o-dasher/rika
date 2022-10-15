@@ -47,11 +47,6 @@ type RootTranslation = {
 		user: {
 			avatar: {
 				/**
-				 * I​ ​c​o​u​l​d​n​'​t​ ​f​i​n​d​ ​{​u​s​e​r​n​a​m​e​}​'​s​ ​a​v​a​t​a​r​.​.​.
-				 * @param {string} username
-				 */
-				not_found: RequiredParams<'username'>
-				/**
 				 * V​i​e​w​ ​a​v​a​t​a​r​ ​o​n​ ​y​o​u​r​ ​b​r​o​w​s​e​r
 				 */
 				view_avatar: string
@@ -98,10 +93,6 @@ export type TranslationFunctions = {
 		}
 		user: {
 			avatar: {
-				/**
-				 * I couldn't find {username}'s avatar...
-				 */
-				not_found: (arg: { username: string }) => LocalizedString
 				/**
 				 * View avatar on your browser
 				 */

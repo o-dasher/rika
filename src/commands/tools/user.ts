@@ -2,14 +2,13 @@ import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import {
 	ActionRowBuilder,
 	ApplicationCommandOptionType,
-	bold,
 	ButtonBuilder,
 	ButtonStyle,
 	CommandInteraction,
 	EmbedBuilder,
 	User
 } from "discord.js";
-import { emotifySpaced, error } from "../../utils/text";
+import { emotifySpaced, emptyCharacter } from "../../utils/text";
 import { DiscordEmotes } from "../../utils/emotes";
 import { FULL_FRAME_AVATAR_SIZE, rikaEmbed } from "../../utils/embeds";
 import { interactionI18N } from "../../utils/i18n";
@@ -47,25 +46,27 @@ export abstract class UserCommand {
 	) {
 		user ??= interaction.user;
 		
-		const { username } = user;
-		
 		const i18n = interactionI18N(interaction);
-		const avatarURL = user.avatarURL({ size: FULL_FRAME_AVATAR_SIZE });
+		
+		const userAvatar = user.avatarURL({ size: FULL_FRAME_AVATAR_SIZE });
+		const displayAvatar = user.displayAvatarURL({ size: FULL_FRAME_AVATAR_SIZE });
 		
 		const embed = rikaEmbed(new EmbedBuilder())
-			.setTitle(emotifySpaced(DiscordEmotes.CameraWithFlash, username))
-			.setImage(avatarURL);
+			.setImage(displayAvatar)
+			.setTitle(emotifySpaced(DiscordEmotes.CameraWithFlash, user.tag));
 		
-		if (!avatarURL)
-			return await interaction.reply(
-				bold(error(i18n.commands.user.avatar.not_found({ username })))
-			);
+		if (userAvatar && userAvatar != displayAvatar) {
+			embed.setAuthor({
+				name: emptyCharacter,
+				iconURL: userAvatar
+			});
+		}
 		
 		const row = new ActionRowBuilder<ButtonBuilder>()
 			.addComponents(
 				new ButtonBuilder()
 					.setStyle(ButtonStyle.Link)
-					.setURL(avatarURL)
+					.setURL(displayAvatar)
 					.setLabel(i18n.commands.user.avatar.view_avatar())
 			);
 		

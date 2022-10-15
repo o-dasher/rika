@@ -17,3 +17,5 @@ export const error = (text: string) => emotifySlashed(DiscordEmotes.X, text);
 
 export const success = (text: string) =>
 	emotifySlashed(DiscordEmotes.WhiteCheckMark, text);
+
+export const emptyCharacter = "\u200b";
