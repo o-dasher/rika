@@ -15,7 +15,7 @@ const name = "math";
 	}
 })
 @SlashGroup(name)
-export abstract class Math {
+export abstract class MathCommand {
 	@Slash({
 		name: "calc",
 		description: "Calculates a mathematical expression.",

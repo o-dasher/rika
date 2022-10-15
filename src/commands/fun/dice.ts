@@ -27,7 +27,7 @@ const clampValue = {
 	}
 })
 @SlashGroup(name)
-export abstract class Dice {
+export abstract class DiceCommand {
 	@Slash({
 		name: "roll",
 		nameLocalizations: {
