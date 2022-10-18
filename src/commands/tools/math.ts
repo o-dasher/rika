@@ -1,20 +1,18 @@
-import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
+import { Discord, Slash, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, bold, CommandInteraction, inlineCode } from "discord.js";
 import { evaluate } from "mathjs";
 import { interactionI18N } from "../../utils/i18n";
 import { error, success } from "../../utils/text";
-
-const name = "math";
+import { MakeGroupCommand } from "../../utils/commands";
 
 @Discord()
-@SlashGroup({
-	name,
+@MakeGroupCommand({
+	name: "math",
 	description: "Some math functions to help you out.",
 	descriptionLocalizations: {
 		"pt-BR": "Algumas funções matemáticas para te ajudar naquela provinha..."
 	}
 })
-@SlashGroup(name)
 export abstract class MathCommand {
 	@Slash({
 		name: "calc",

@@ -1,14 +1,13 @@
-import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
+import { Discord, Slash, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, bold, CommandInteraction } from "discord.js";
 import { interactionI18N } from "../../utils/i18n";
 import { random } from "pandemonium";
 import { emotifySlashed } from "../../utils/text";
 import { DiscordEmotes } from "../../utils/emotes";
+import { MakeGroupCommand } from "../../utils/commands";
 
 const default_min = 1;
 const default_max = 10;
-
-const name = "dice";
 
 const clampValue = {
 	minValue: 1,
@@ -16,8 +15,8 @@ const clampValue = {
 };
 
 @Discord()
-@SlashGroup({
-	name,
+@MakeGroupCommand({
+	name: "dice",
 	nameLocalizations: {
 		"pt-BR": "dado"
 	},
@@ -26,7 +25,6 @@ const clampValue = {
 		"pt-BR": "Dados... eles são bem legais."
 	}
 })
-@SlashGroup(name)
 export abstract class DiceCommand {
 	@Slash({
 		name: "roll",
